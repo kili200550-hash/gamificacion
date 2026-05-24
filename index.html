@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Misión: Reunión Crítica</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #eff2fb;
+      color: #16213d;
+      line-height: 1.6;
+    }
+
+    header {
+      min-height: 100vh;
+      padding: 70px 8%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #16213d, #2d3b73);
+      color: white;
+      text-align: center;
+    }
+
+    .hero {
+      max-width: 900px;
+    }
+
+    .tag {
+      display: inline-block;
+      background: #a596ff;
+      color: white;
+      padding: 8px 18px;
+      border-radius: 30px;
+      font-size: 0.9rem;
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      font-size: clamp(2.4rem, 6vw, 5rem);
+      line-height: 1;
+      margin-bottom: 25px;
+    }
+
+    h2 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+      color: #16213d;
+    }
+
+    h3 {
+      margin-bottom: 12px;
+      color: #2d3b73;
+    }
+
+    p {
+      margin-bottom: 15px;
+    }
+
+    .btn {
+      border: none;
+      background: #a596ff;
+      color: white;
+      padding: 14px 26px;
+      border-radius: 14px;
+      cursor: pointer;
+      font-weight: 700;
+      margin-top: 20px;
+      transition: 0.3s;
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+      background: #8f7cff;
+    }
+
+    section {
+      padding: 70px 8%;
+    }
+
+    .card {
+      background: white;
+      padding: 30px;
+      border-radius: 26px;
+      box-shadow: 0 12px 35px rgba(22, 33, 61, 0.12);
+      margin-bottom: 25px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 24px;
+    }
+
+    .player-panel {
+      background: #16213d;
+      color: white;
+      padding: 30px;
+      border-radius: 26px;
+      margin-bottom: 30px;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 18px;
+      margin-top: 20px;
+    }
+
+    .stat {
+      background: rgba(255,255,255,0.12);
+      border-radius: 18px;
+      padding: 18px;
+      text-align: center;
+    }
+
+    .progress-bar {
+      width: 100%;
+      height: 18px;
+      background: #dfe4f5;
+      border-radius: 20px;
+      overflow: hidden;
+      margin-top: 10px;
+    }
+
+    .progress {
+      height: 100%;
+      width: 0%;
+      background: #a596ff;
+      transition: 0.4s;
+    }
+
+    .level {
+      border-left: 8px solid #a596ff;
+    }
+
+    .mission-options button {
+      display: block;
+      width: 100%;
+      margin: 12px 0;
+      padding: 15px;
+      border-radius: 14px;
+      border: 2px solid #dfe4f5;
+      background: #f8f9ff;
+      cursor: pointer;
+      text-align: left;
+      font-size: 1rem;
+      transition: 0.3s;
+    }
+
+    .mission-options button:hover {
+      border-color: #a596ff;
+      background: #f0edff;
+    }
+
+    .feedback {
+      margin-top: 18px;
+      padding: 18px;
+      border-radius: 16px;
+      background: #f2f4ff;
+      font-weight: 600;
+      display: none;
+    }
+
+    .badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .badge {
+      background: #eff2fb;
+      border: 2px solid #a596ff;
+      color: #16213d;
+      padding: 10px 16px;
+      border-radius: 30px;
+      font-weight: 700;
+    }
+
+    .final {
+      background: linear-gradient(135deg, #16213d, #a596ff);
+      color: white;
+      text-align: center;
+      border-radius: 30px;
+      padding: 50px;
+    }
+
+    .final h2 {
+      color: white;
+    }
+
+    footer {
+      padding: 30px;
+      text-align: center;
+      color: #5d6684;
+    }
+
+    @media (max-width: 768px) {
+      section {
+        padding: 50px 6%;
+      }
+
+      .card {
+        padding: 22px;
+      }
+
+      header {
+        padding: 50px 6%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div class="hero">
+      <span class="tag">Experiencia gamificada tipo videojuego</span>
+      <h1>Misión: Reunión Crítica</h1>
+      <p>
+        La empresa NexaTech atraviesa una crisis de comunicación. 
+        Las reuniones son largas, confusas y generan conflictos. 
+        Tu misión será convertirte en Agente Estratégico de Comunicación 
+        y restaurar la coordinación del equipo.
+      </p>
+      <button class="btn" onclick="scrollToGame()">Iniciar misión</button>
+    </div>
+  </header>
+
+  <section id="game">
+    <div class="player-panel">
+      <h2 style="color:white;">Panel del jugador</h2>
+      <p>Rol asignado: <strong>Agente Estratégico de Comunicación</strong></p>
+
+      <div class="stats">
+        <div class="stat">
+          <h3 style="color:white;">XP</h3>
+          <p id="xp">0</p>
+        </div>
+
+        <div class="stat">
+          <h3 style="color:white;">Energía</h3>
+          <p id="energy">❤️❤️❤️❤️❤️</p>
+        </div>
+
+        <div class="stat">
+          <h3 style="color:white;">Nivel actual</h3>
+          <p id="currentLevel">1</p>
+        </div>
+      </div>
+
+      <p style="margin-top:20px;">Progreso general</p>
+      <div class="progress-bar">
+        <div class="progress" id="progress"></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Creación del perfil del jugador</h2>
+      <p>
+        Antes de iniciar, el estudiante asume una identidad dentro de la experiencia.
+        Puede imaginar su avatar, nombre de agente y habilidad principal.
+      </p>
+
+      <div class="grid">
+        <div class="card">
+          <h3>Estratega</h3>
+          <p>Organiza ideas, prioriza información y toma decisiones con claridad.</p>
+        </div>
+
+        <div class="card">
+          <h3>Mediador</h3>
+          <p>Reduce tensiones y ayuda a que el equipo dialogue mejor.</p>
+        </div>
+
+        <div class="card">
+          <h3>Analista</h3>
+          <p>Detecta errores de comunicación y propone ajustes concretos.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="card level">
+      <h2>Nivel 1: Escucha activa</h2>
+      <p>
+        El equipo está discutiendo, pero nadie escucha realmente. 
+        Tu primera misión es identificar cuál respuesta ayuda a comprender mejor la situación.
+      </p>
+
+      <div class="mission-options">
+        <button onclick="answer(true, 'Nivel 1 superado. Validaste la situación antes de responder. Has ganado 30 XP.')">
+          Escuchar primero, resumir la preocupación del equipo y luego responder.
+        </button>
+
+        <button onclick="answer(false, 'La respuesta fue impulsiva. Perdiste energía. Intenta escuchar antes de intervenir.')">
+          Interrumpir rápidamente para imponer tu punto de vista.
+        </button>
+      </div>
+
+      <div class="feedback" id="feedback"></div>
+    </div>
+
+    <div class="card level">
+      <h2>Nivel 2: Organización de ideas</h2>
+      <p>
+        La reunión tiene demasiados temas abiertos. 
+        Debes decidir cómo organizar la conversación para evitar confusión.
+      </p>
+
+      <div class="mission-options">
+        <button onclick="answer(true, 'Nivel 2 superado. Organizaste la información por prioridades. Has ganado 30 XP.')">
+          Separar los temas por prioridad, urgencia y responsables.
+        </button>
+
+        <button onclick="answer(false, 'La reunión perdió foco. Perdiste energía. Es necesario priorizar la información.')">
+          Hablar de todos los temas al mismo tiempo para avanzar más rápido.
+        </button>
+      </div>
+    </div>
+
+    <div class="card level">
+      <h2>Nivel 3: Comunicación asertiva</h2>
+      <p>
+        Un compañero presenta una idea con la que no estás de acuerdo.
+        Debes responder sin generar conflicto.
+      </p>
+
+      <div class="mission-options">
+        <button onclick="answer(true, 'Nivel 3 superado. Expresaste desacuerdo con respeto y argumentos. Has ganado 30 XP.')">
+          Reconocer su aporte y explicar tu punto con argumentos claros.
+        </button>
+
+        <button onclick="answer(false, 'La respuesta cerró el diálogo. Perdiste energía. La asertividad requiere respeto y claridad.')">
+          Decir que su idea no sirve y continuar con tu propuesta.
+        </button>
+      </div>
+    </div>
+
+    <div class="card level">
+      <h2>Nivel 4: Manejo de conflictos</h2>
+      <p>
+        Dos áreas del equipo se culpan entre sí por un retraso. 
+        Tu misión es reducir la tensión y enfocar la reunión en soluciones.
+      </p>
+
+      <div class="mission-options">
+        <button onclick="answer(true, 'Nivel 4 superado. Redirigiste el conflicto hacia soluciones. Has ganado 30 XP.')">
+          Identificar el problema común y proponer acciones concretas.
+        </button>
+
+        <button onclick="answer(false, 'El conflicto aumentó. Perdiste energía. Evita reforzar la culpa entre áreas.')">
+          Preguntar quién fue el responsable principal del error.
+        </button>
+      </div>
+    </div>
+
+    <div class="card level">
+      <h2>Nivel 5: Boss final</h2>
+      <p>
+        Llegas a la reunión estratégica final. Hay poco tiempo, tensión y decisiones importantes.
+        Debes integrar todo lo aprendido.
+      </p>
+
+      <div class="mission-options">
+        <button onclick="finalBoss(true)">
+          Escuchar, ordenar prioridades, comunicar con claridad y cerrar con acuerdos.
+        </button>
+
+        <button onclick="finalBoss(false)">
+          Acelerar la reunión, evitar la discusión y terminar sin acuerdos concretos.
+        </button>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Insignias desbloqueadas</h2>
+      <p>Cada logro representa una habilidad desarrollada durante la experiencia.</p>
+
+      <div class="badges" id="badges">
+        <span class="badge">Sin insignias todavía</span>
+      </div>
+    </div>
+
+    <div class="final" id="finalMessage">
+      <h2>Completa la misión final</h2>
+      <p>
+        Avanza por los niveles, toma decisiones estratégicas y desbloquea tu rango final.
+      </p>
+    </div>
+  </section>
+
+  <footer>
+    Experiencia de aprendizaje gamificada | Comunicación efectiva en reuniones
+  </footer>
+
+  <script>
+    let xp = 0;
+    let energy = 5;
+    let completed = 0;
+    let badges = [];
+
+    function scrollToGame() {
+      document.getElementById("game").scrollIntoView({ behavior: "smooth" });
+    }
+
+    function updatePanel() {
+      document.getElementById("xp").innerText = xp;
+      document.getElementById("energy").innerText = "❤️".repeat(energy);
+      document.getElementById("currentLevel").innerText = Math.min(completed + 1, 5);
+
+      let progress = Math.min((completed / 5) * 100, 100);
+      document.getElementById("progress").style.width = progress + "%";
+
+      const badgeContainer = document.getElementById("badges");
+
+      if (badges.length === 0) {
+        badgeContainer.innerHTML = '<span class="badge">Sin insignias todavía</span>';
+      } else {
+        badgeContainer.innerHTML = badges
+          .map(badge => `<span class="badge">${badge}</span>`)
+          .join("");
+      }
+    }
+
+    function showFeedback(message) {
+      const feedback = document.getElementById("feedback");
+      feedback.style.display = "block";
+      feedback.innerText = message;
+    }
+
+    function answer(correct, message) {
+      if (correct) {
+        xp += 30;
+        completed += 1;
+
+        const possibleBadges = [
+          "🏅 Escucha activa",
+          "🏅 Organización estratégica",
+          "🏅 Comunicación asertiva",
+          "🏅 Mediación de conflictos"
+        ];
+
+        if (badges.length < 4) {
+          badges.push(possibleBadges[badges.length]);
+        }
+
+      } else {
+        energy = Math.max(energy - 1, 0);
+      }
+
+      showFeedback(message);
+      updatePanel();
+    }
+
+    function finalBoss(success) {
+      const finalMessage = document.getElementById("finalMessage");
+
+      if (success) {
+        xp += 50;
+        completed = 5;
+        badges.push("🏆 Líder Estratégico de Comunicación");
+
+        finalMessage.innerHTML = `
+          <h2>¡Misión completada!</h2>
+          <p>
+            Gracias a tus decisiones estratégicas, la comunicación del equipo fue restaurada.
+            Has desbloqueado el rango final: <strong>Líder Estratégico de Comunicación</strong>.
+          </p>
+          <p>
+            Esta experiencia demuestra que comunicarse bien implica escuchar, organizar,
+            responder con claridad y transformar los conflictos en oportunidades de mejora.
+          </p>
+        `;
+      } else {
+        energy = Math.max(energy - 1, 0);
+
+        finalMessage.innerHTML = `
+          <h2>Misión incompleta</h2>
+          <p>
+            La reunión terminó sin acuerdos claros. Revisa tus decisiones y vuelve a intentarlo.
+            Recuerda: una comunicación efectiva necesita escucha, claridad y cierre estratégico.
+          </p>
+        `;
+      }
+
+      updatePanel();
+    }
+
+    updatePanel();
+  </script>
+
+</body>
+</html>
